@@ -1,0 +1,258 @@
+/* Core setup and resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f4f9;
+  display: flex; /* Aligns Sidebar left and Main Content right */
+  min-height: 100vh;
+}
+
+/* SIDEBAR LAYOUT */
+.sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e1e8ed;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  flex-grow: 1;
+}
+
+.nav-links li {
+  margin-bottom: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.nav-links li.active a,
+.nav-links a:hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.user-profile {
+  padding-top: 20px;
+  border-top: 1px solid #e1e8ed;
+  font-weight: bold;
+  color: #334155;
+}
+
+/* MAIN CONTENT LAYOUT */
+.dashboard-main {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  color: #1e293b;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.dashboard-header p {
+  color: #64748b;
+}
+
+.search-box input {
+  padding: 10px 15px;
+  width: 250px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* 2-COLUMN GRID SYSTEM */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split screen evenly into two halves */
+  gap: 30px;
+}
+
+/* LEFT COLUMN BLOCKS */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2x2 layout grid for stats */
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.stat-card h3 {
+  font-size: 1.6rem;
+  color: #1e293b;
+  margin: 10px 0 2px 0;
+}
+
+.stat-card p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.quick-actions h2,
+.section-title h2 {
+  color: #1e293b;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.action-btn {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* RIGHT COLUMN BLOCKS */
+.ai-banner {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+.badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.ai-banner h2 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-all {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* TRIP CONTAINER CARDS */
+.trip-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  display: flex; /* Places text layout left and image block right */
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.trip-info {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.status {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.status.upcoming {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.trip-info h3 {
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.trip-info p {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.details-btn {
+  margin-top: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* Placeholder blocks for cards images */
+.trip-image {
+  width: 120px;
+  background-size: cover;
+  background-position: center;
+}
+.img-paris {
+  background-color: #bfdbfe;
+}
+.img-kyoto {
+  background-color: #fbcfe8;
+}
