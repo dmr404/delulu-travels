@@ -1,28 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 50px; background: #f4f4f9; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        button { padding: 10px 15px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <h1>Welcome to your Dashboard!</h1>
-        <p id="user-email">Loading user info...</p>
-        <button id="logout-btn">Log Out</button>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delulu Dashboard</title>
+    <link rel="stylesheet" href="stylesDash.css" />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <header class="navbar">
+      <div class="nav-container">
+        <!-- Logo + Brand Name (Left Side) -->
+        <div class="nav-logo">
+          <span class="logo-icon">✈️</span>
+          <span class="logo-text">Delulu-Travels</span>
+        </div>
 
+        <!-- Menu Button for Mobile View -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open navigation menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <!-- Navigation Links (Right Side) -->
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-item">Home</a>
+          <a href="dashboard.html" class="nav-item">Dashboard</a>
+          <a href="trips.html" class="nav-item">Trips</a>
+          <a href="expenses.html" class="nav-item">Expenses</a>
+          <a href="ai-planner.html" class="nav-item">AI Planner</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT (Right Panel) -->
+    <main class="dashboard-main">
+      <!-- HEADER SECTION -->
+      <header class="dashboard-header">
+        <div>
+          <h1>Good Morning, User 👋</h1>
+          <p>Ready to plan your next adventure?</p>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="🔍 Search destinations..." />
+        </div>
+      </header>
+
+      <!-- DASHBOARD BODY: SPLIT INTO TWO COLUMNS -->
+      <div class="dashboard-grid">
+        <!-- LEFT COLUMN: QUICK CARDS & ACTIONS -->
+        <div class="left-column">
+          <!-- STATS CARDS ROW -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="icon">📅</span>
+              <h3>.</h3>
+              <p>Upcoming Trips</p>
+            </div>
+            <div class="stat-card">
+              <span class="icon">💰</span>
+              <h3>.</h3>
+              <p>Current Budget</p>
+            </div>
+            <div class="stat-card">
+              <span class="icon">⏳</span>
+              <h3>.</h3>
+              <p>Days Remaining</p>
+            </div>
+            <div class="stat-card">
+              <span class="icon">☀️</span>
+              <h3>.</h3>
+              <p>Weather - Mumbai</p>
+            </div>
+          </div>
+
+          <!-- QUICK ACTIONS SECTION -->
+          <section class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="actions-grid">
+              <button class="action-btn">➕ Create Trip</button>
+              <button class="action-btn">✨ AI Itinerary</button>
+              <button class="action-btn">📊 Expense Tracker</button>
+              <button class="action-btn">🗺️ View Trips</button>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT COLUMN: AI RECOMMENDATIONS & TRIPS -->
+
+        <div class="right-column">
+          <section class="ai-banner">
+            <span class="badge">AI RECOMMENDATION</span>
+            <h2>
+              Based on your budget and travel duration, we recommend Jaipur for
+              a 3-day trip.
+            </h2>
+          </section>
+
+          <!-- RECENT TRIPS SECTION -->
+          <section class="recent-trips">
+            <div class="section-title">
+              <h2>Recent Trips</h2>
+              <a href="#" class="view-all">View all &rarr;</a>
+            </div>
+
+            <!-- TRIP CARD 1: PARIS -->
+            <div class="trip-card">
+              <div class="trip-info">
+                <span class="status upcoming">Upcoming</span>
+                <h3>Paris, France</h3>
+                <p>📅 Aug 14 - Aug 21, 2026</p>
+                <p>💵 Budget: $1,200 | Spent: $480</p>
+                <button class="details-btn">View Details</button>
+              </div>
+              <div class="trip-image img-paris"></div>
+            </div>
+
+            <!-- TRIP CARD 2: KYOTO -->
+            <div class="trip-card">
+              <div class="trip-info">
+                <span class="status upcoming">Upcoming</span>
+                <h3>Kyoto, Japan</h3>
+                <p>📅 Sep 3 - Sep 10, 2026</p>
+                <p>💵 Budget: $1,800 | Spent: $720</p>
+                <button class="details-btn">View Details</button>
+              </div>
+              <div class="trip-image img-kyoto"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script type="module">
-        import { auth } from './app.js';
-        import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"; // Adjust based on imports
+      // 1. Import Firebase Database tools
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js";
 
-        // Check if user is logged in
-        // (Handled fully in app.js for simplicity)
+      // 2. Connect to your exact Firebase project
+      const firebaseConfig = {
+        apiKey: "AIzaSyBsqIfc4jryYUxXR31d_-_v49um55GpqFw",
+        authDomain: "travel-9eb8d.firebaseapp.com",
+        projectId: "travel-9eb8d",
+        storageBucket: "travel-9eb8d.firebasestorage.app",
+        messagingSenderId: "493430713457",
+        appId: "1:493430713457:web:4f9d63eb3e24383352bfd0",
+        measurementId: "G-NK6HY407SW",
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // 3. Chatbox Logic
+      const sendBtn = document.getElementById("send-btn");
+      const chatBox = document.getElementById("chat-box");
+      const userInput = document.getElementById("user-input");
+
+      sendBtn.addEventListener("click", async () => {
+        const text = userInput.value;
+        if (text === "") return;
+
+        chatBox.innerHTML += `<p style="margin-bottom:10px;"><strong>You:</strong> ${text}</p>`;
+        userInput.value = "";
+
+        // Create a unique ID for the loading text so we don't delete the wrong one
+        const loadingId = "loading-" + Date.now();
+        chatBox.innerHTML += `<p id="${loadingId}" style="color: gray; margin-bottom:10px;"><em>AI is thinking...</em></p>`;
+
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/recommend-trip",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ query: text, budget: "", duration: "" }),
+            },
+          );
+
+          const data = await response.json();
+          document.getElementById(loadingId).remove();
+
+          if (data.error) {
+            chatBox.innerHTML += `<p style="color: red;"><strong>Server Error:</strong> ${data.error}</p>`;
+          } else {
+            // Create a box for the AI text and the save button
+            const messageBox = document.createElement("div");
+            messageBox.style = "margin-bottom:15px; color: #1e3a8a;";
+            messageBox.innerHTML = `<strong>AI:</strong> ${marked.parse(data.result)}`;
+
+            // Create the Save Button
+            const saveBtn = document.createElement("button");
+            saveBtn.innerText = "💾 Save Trip";
+            saveBtn.style =
+              "background: #10b981; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 10px; font-weight: bold;";
+
+            // What happens when you click Save
+            saveBtn.onclick = async () => {
+              saveBtn.innerText = "Saving...";
+              await addDoc(collection(db, "saved_trips"), {
+                tripDetails: data.result,
+                dateSaved: new Date().toLocaleDateString(),
+              });
+              saveBtn.innerText = "✅ Saved!";
+              saveBtn.style.background = "gray";
+              saveBtn.disabled = true;
+            };
+
+            messageBox.appendChild(saveBtn);
+            chatBox.appendChild(messageBox);
+          }
+
+          chatBox.scrollTop = chatBox.scrollHeight;
+        } catch (error) {
+          document.getElementById(loadingId).remove();
+          chatBox.innerHTML += `<p style="color: red;">Cannot connect to backend server. Is it running?</p>`;
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
