@@ -3,220 +3,161 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JourneyIQ Dashboard</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Delulu-Travels | Explore Incredible India</title>
+
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="stylesHome.css" />
+    <link rel="stylesheet" href="navbar.css" />
+
+    <!-- Google Font for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <!-- SIDE NAVIGATION BAR (Left Panel) -->
-    <aside class="sidebar">
-      <div class="logo">🌐 Delulu Travels</div>
-      <ul class="nav-links">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Trips</a></li>
-        <li><a href="#">Expenses</a></li>
-        <li><a href="#">AI Planner</a></li>
-        <li><a href="#">Profile</a></li>
-      </ul>
-
-    <a href="index.html"> <div class="user-profile">👤 User</div> </a>
-    
-      <!-- <div class="user-profile">👤 User</div> -->
-
-
-    </aside>
-
-    <!-- MAIN DASHBOARD CONTENT (Right Panel) -->
-    <main class="dashboard-main">
-      <!-- HEADER SECTION -->
-      <header class="dashboard-header">
-        <div>
-          <h1>Good Morning, User 👋</h1>
-          <p>Ready to plan your next adventure?</p>
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <header class="navbar">
+      <div class="nav-container">
+        <!-- Logo + Brand Name (Left Side) -->
+        <div class="nav-logo">
+          <span class="logo-icon">✈️</span>
+          <span class="logo-text">Delulu-Travels</span>
         </div>
-        <div class="search-box">
-          <input type="text" placeholder="🔍 Search destinations..." />
-        </div>
-      </header>
 
-      <!-- DASHBOARD BODY: SPLIT INTO TWO COLUMNS -->
-      <div class="dashboard-grid">
-        <!-- LEFT COLUMN: QUICK CARDS & ACTIONS -->
-        <div class="left-column">
-          <!-- STATS CARDS ROW -->
-          <div class="stats-row">
-            <div class="stat-card">
-              <span class="icon">📅</span>
-              <h3>4</h3>
-              <p>Upcoming Trips</p>
-            </div>
-            <div class="stat-card">
-              <span class="icon">💰</span>
-              <h3>$3,240</h3>
-              <p>Current Budget</p>
-            </div>
-            <div class="stat-card">
-              <span class="icon">⏳</span>
-              <h3>12</h3>
-              <p>Days Remaining</p>
-            </div>
-            <div class="stat-card">
-              <span class="icon">☀️</span>
-              <h3>24°C</h3>
-              <p>Weather - Mumbai</p>
-            </div>
+        <!-- Menu Button for Mobile View -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open navigation menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <!-- Navigation Links (Right Side) -->
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-item">Home</a>
+          <a href="dashboard.html" class="nav-item">Dashboard</a>
+          <a href="trips.html" class="nav-item">Trips</a>
+          <a href="expenses.html" class="nav-item">Expenses</a>
+          <a href="ai-planner.html" class="nav-item">AI Planner</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1 class="hero-title">Explore Incredible India</h1>
+        <p class="hero-subtitle">
+          Plan smarter trips with AI-powered recommendations.
+        </p>
+        <a href="dashboard.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </section>
+
+    <!-- ==================== RECOMMENDED DESTINATIONS ==================== -->
+    <section class="destinations">
+      <h2 class="section-title">Recommended Destinations</h2>
+
+      <div class="card-grid">
+        <!-- Destination Card 1: Jaipur -->
+        <div class="destination-card">
+          <img
+            src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Hawa Mahal palace in Jaipur, Rajasthan"
+          />
+          <div class="card-content">
+            <h3>Jaipur</h3>
+            <p class="state-name">Rajasthan</p>
+            <p class="card-description">
+              Explore magnificent forts, royal palaces and colorful markets.
+            </p>
+            <a href="destination.html?place=jaipur" class="btn btn-secondary"
+              >Explore</a
+            >
           </div>
-
-          <!-- QUICK ACTIONS SECTION -->
-          <section class="quick-actions">
-            <h2>Quick Actions</h2>
-            <div class="actions-grid">
-              <button class="action-btn">➕ Create Trip</button>
-              <button class="action-btn">✨ AI Itinerary</button>
-              <button class="action-btn">📊 Expense Tracker</button>
-              <button class="action-btn">🗺️ View Trips</button>
-            </div>
-          </section>
         </div>
 
-        <!-- RIGHT COLUMN: AI RECOMMENDATIONS & TRIPS -->
-        <div class="right-column">
-          <!-- AI BLUE CARD -->
-           <section style="background: white; padding: 20px; border-radius: 14px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-  <h2>🤖 AI Travel Planner</h2>
-  
-  <!-- This is where chat messages will appear -->
-  <div id="chat-box" style="height: 250px; overflow-y: auto; background: #f0f4f9; padding: 15px; margin-bottom: 15px; border-radius: 8px;"></div>
-  
-  <!-- Input box and button -->
-  <div style="display: flex; gap: 10px;">
-    <input type="text" id="user-input" placeholder="E.g. Where can I go for $500?" style="flex-grow: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none;" />
-    <button id="send-btn" style="background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold;">Ask</button>
-  </div>
-</section>
-          <section class="ai-banner">
-            <span class="badge">AI RECOMMENDATION</span>
-            <h2>
-              Based on your budget and travel duration, we recommend Jaipur for
-              a 3-day trip.
-            </h2>
-          </section>
+        <!-- Destination Card 2: Ladakh -->
+        <div class="destination-card">
+          <img
+            src="https://images.unsplash.com/photo-1593118845043-359e5f628214?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Mountain landscape in Ladakh"
+          />
+          <div class="card-content">
+            <h3>Ladakh</h3>
+            <p class="state-name">Union Territory of Ladakh</p>
+            <p class="card-description">
+              Discover breathtaking mountains, monasteries and high-altitude
+              lakes.
+            </p>
+            <a href="destination.html?place=ladakh" class="btn btn-secondary"
+              >Explore</a
+            >
+          </div>
+        </div>
 
-          <!-- RECENT TRIPS SECTION -->
-          <section class="recent-trips">
-            <div class="section-title">
-              <h2>Recent Trips</h2>
-              <a href="#" class="view-all">View all &rarr;</a>
-            </div>
-
-            <!-- TRIP CARD 1: PARIS -->
-            <div class="trip-card">
-              <div class="trip-info">
-                <span class="status upcoming">Upcoming</span>
-                <h3>Paris, France</h3>
-                <p>📅 Aug 14 - Aug 21, 2026</p>
-                <p>💵 Budget: $1,200 | Spent: $480</p>
-                <button class="details-btn">View Details</button>
-              </div>
-              <div class="trip-image img-paris"></div>
-            </div>
-
-            <!-- TRIP CARD 2: KYOTO -->
-            <div class="trip-card">
-              <div class="trip-info">
-                <span class="status upcoming">Upcoming</span>
-                <h3>Kyoto, Japan</h3>
-                <p>📅 Sep 3 - Sep 10, 2026</p>
-                <p>💵 Budget: $1,800 | Spent: $720</p>
-                <button class="details-btn">View Details</button>
-              </div>
-              <div class="trip-image img-kyoto"></div>
-            </div>
-          </section>
+        <!-- Destination Card 3: Munnar -->
+        <div class="destination-card">
+          <img
+            src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80"
+            alt="Tea plantations in Munnar, Kerala"
+          />
+          <div class="card-content">
+            <h3>Munnar</h3>
+            <p class="state-name">Kerala</p>
+            <p class="card-description">
+              Relax among lush tea gardens, misty hills and cool mountain air.
+            </p>
+            <a href="destination.html?place=munnar" class="btn btn-secondary"
+              >Explore</a
+            >
+          </div>
         </div>
       </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script type="module">
-  // 1. Import Firebase Database tools
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js";
+    </section>
 
-  // 2. Connect to your exact Firebase project
-  const firebaseConfig = {
-  apiKey: "AIzaSyBsqIfc4jryYUxXR31d_-_v49um55GpqFw",
-  authDomain: "travel-9eb8d.firebaseapp.com",
-  projectId: "travel-9eb8d",
-  storageBucket: "travel-9eb8d.firebasestorage.app",
-  messagingSenderId: "493430713457",
-  appId: "1:493430713457:web:4f9d63eb3e24383352bfd0",
-  measurementId: "G-NK6HY407SW"
-};
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    <!-- ==================== WHY CHOOSE DELULU-TRAVELS ==================== -->
+    <section class="features">
+      <h2 class="section-title">Why Choose Delulu-Travels</h2>
 
-  // 3. Chatbox Logic
-  const sendBtn = document.getElementById('send-btn');
-  const chatBox = document.getElementById('chat-box');
-  const userInput = document.getElementById('user-input');
+      <div class="card-grid">
+        <!-- Feature Card 1 -->
+        <div class="feature-card">
+          <span class="feature-icon">🤖</span>
+          <h3>AI Recommendations</h3>
+          <p>
+            Personalized destinations based on your budget and travel history.
+          </p>
+        </div>
 
-  sendBtn.addEventListener('click', async () => {
-    const text = userInput.value;
-    if (text === "") return; 
+        <!-- Feature Card 2 -->
+        <div class="feature-card">
+          <span class="feature-icon">💰</span>
+          <h3>Expense Tracking</h3>
+          <p>Manage your travel budget in one place.</p>
+        </div>
 
-    chatBox.innerHTML += `<p style="margin-bottom:10px;"><strong>You:</strong> ${text}</p>`;
-    userInput.value = ''; 
-    
-    // Create a unique ID for the loading text so we don't delete the wrong one
-    const loadingId = "loading-" + Date.now();
-    chatBox.innerHTML += `<p id="${loadingId}" style="color: gray; margin-bottom:10px;"><em>AI is thinking...</em></p>`;
+        <!-- Feature Card 3 -->
+        <div class="feature-card">
+          <span class="feature-icon">🗺️</span>
+          <h3>Smart Trip Planning</h3>
+          <p>Create organized itineraries with AI assistance.</p>
+        </div>
+      </div>
+    </section>
 
-    try {
-      const response = await fetch('http://localhost:5000/api/recommend-trip', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: text, budget: "", duration: "" })
-      });
-      
-      const data = await response.json();
-      document.getElementById(loadingId).remove();
-      
-      if (data.error) {
-         chatBox.innerHTML += `<p style="color: red;"><strong>Server Error:</strong> ${data.error}</p>`;
-      } else {
-         // Create a box for the AI text and the save button
-         const messageBox = document.createElement('div');
-         messageBox.style = "margin-bottom:15px; color: #1e3a8a;";
-         messageBox.innerHTML = `<strong>AI:</strong> ${marked.parse(data.result)}`;
-         
-         // Create the Save Button
-         const saveBtn = document.createElement('button');
-         saveBtn.innerText = "💾 Save Trip";
-         saveBtn.style = "background: #10b981; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 10px; font-weight: bold;";
-         
-         // What happens when you click Save
-         saveBtn.onclick = async () => {
-             saveBtn.innerText = "Saving...";
-             await addDoc(collection(db, "saved_trips"), {
-                 tripDetails: data.result,
-                 dateSaved: new Date().toLocaleDateString()
-             });
-             saveBtn.innerText = "✅ Saved!";
-             saveBtn.style.background = "gray";
-             saveBtn.disabled = true;
-         };
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <p class="footer-brand">Delulu-Travels</p>
+      <p class="footer-tagline">Made for exploring Incredible India 🇮🇳</p>
+    </footer>
 
-         messageBox.appendChild(saveBtn);
-         chatBox.appendChild(messageBox);
-      }
-      
-      chatBox.scrollTop = chatBox.scrollHeight;
-      
-    } catch (error) {
-      document.getElementById(loadingId).remove();
-      chatBox.innerHTML += `<p style="color: red;">Cannot connect to backend server. Is it running?</p>`;
-    }
-  });
-</script>
-  
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
   </body>
 </html>
